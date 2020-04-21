@@ -1,0 +1,40 @@
+<div class="col-md-6 mx-auto text-center">
+         <div class="header-title">
+            <h1 class="wv-heading--title">
+               Forgot your password?
+            </h1>
+            <h2 class="wv-heading--subtitle">
+              Don't worry! We'll get it back for you uwu
+            </h2>
+         </div>
+      </div>
+<div class="row">
+<div class="col-md-4 mx-auto">
+    <div class="myform form ">
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+  <div class="display-inline">
+  <div class="field form-group">
+    <%= f.email_field :email, placeholder: :email, autofocus: true, autocomplete: "email",:class=>"form-control my-input" %>
+  </div>
+
+  <div class="actions text-center">
+    <%= f.submit "Send to email for instructions",:class=>"btn btn-block btn-primary", :id=>"send-email-confirmation"%>
+  </div>
+  </div>
+<% end %>
+<br>
+<br>
+<br>
+<div class="display-inline">
+<div class="actions text-center floatleft">
+  <%= link_to "Log in", new_session_path(resource_name) , :class=>"btn btn-block g-button", :style=>"width:100%"%><br />
+</div>
+<div class="actions text-center floatright">
+<%= link_to "Sign up", new_registration_path(resource_name), :class=>"btn btn-block send-button tx-tfm", :style=>"width:100%" %><br />
+</div>
+
+</div>
+</div>
+</div>
+</div>

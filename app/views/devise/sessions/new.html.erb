@@ -1,0 +1,46 @@
+<div class="col-md-6 mx-auto text-center">
+         <div class="header-title">
+            <h1 class="wv-heading--title">
+               Log In
+            </h1>
+            <h2 class="wv-heading--subtitle">
+              Welcome back! Let's have a good time again!
+            </h2>
+         </div>
+      </div>
+<div class="row">
+<div class="col-md-4 mx-auto">
+    <div class="myform form ">
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="field form-group ">
+    <%= f.text_field :login, placeholder: "Username or Email",:class=>"form-control my-input" %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.password_field :password, placeholder: :password, autocomplete: "current-password" ,:class=>"form-control my-input" %>
+  </div>
+
+  <% if devise_mapping.rememberable? %>
+    <div class="field form-group">
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me %>
+    </div>
+  <% end %>
+
+  <div class="actions text-center">
+    <%= f.submit "Log in", :class=>"btn btn-block g-button"%>
+  </div>
+<% end %>
+<div class="col-md-12 ">
+                     <div class="login-or">
+                        <hr class="hr-or">
+                        <span class="span-or">or</span>
+                     </div>
+                  </div>
+<div class="form-group">
+<%= render "devise/shared/links" %>
+</div>
+</div>
+</div>
+</div>
+

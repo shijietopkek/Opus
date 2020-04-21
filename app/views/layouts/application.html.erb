@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Opus20</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag    'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css' %>
+
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'jquery.bootpag' %>
+    <%= javascript_include_tag "https://code.jquery.com/jquery-3.5.0.js"%>
+    <%= javascript_include_tag  "https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" %>
+    <%= javascript_include_tag "https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" %>
+    <%= stylesheet_link_tag "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"%>
+  </head>
+
+  <body>
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <a class="navbar-brand" href=<%= about_path%>>Opus</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav mr-auto">
+    <div class = "navbutton">
+      <li><%= link_to "Home", home_path,class: "nav-text"%> </li>
+      </div>
+      <div class = "navbutton">
+      <li><%= link_to "Create Post", new_post_path,class: "nav-text"%> </li>
+      </div>
+    </ul>
+
+ 
+    <% if current_user %>
+    <ul class="navbar-nav navbar-right">
+    <div class = "navbutton">
+      <li><%= link_to "Profile", profile_path,class: "nav-text" %></li>
+      </div>
+
+    <div class = "navbutton">
+      <li><%= link_to "Sign Out", destroy_user_session_path,class: "nav-text", method: :delete %></li>
+      </div>
+    </ul>
+    <% else %>
+    <ul class="navbar-nav navbar-right">
+    <div class = "navbutton">
+      <li><%= link_to "Sign Up", new_user_registration_path,class: "nav-text" %> </li>
+      </div>
+      <div class = "navbutton">
+      <li><%= link_to "Log in", new_user_session_path,class: "nav-text" %> </li>
+      </div>
+    </ul>
+    <% end %>
+    
+    
+  </div>
+</nav>
+<div class='container center-div'>
+
+  <%= render "layouts/alerts" %>
+  </div>
+<div class='container'>
+
+    <%= yield %>
+    </div>
+  </body>
+</html>

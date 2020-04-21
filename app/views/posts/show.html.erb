@@ -1,0 +1,108 @@
+
+
+<div class='card'>
+    <div class='card-body'>
+    <h1 class="card-title"><%= @post.title %></h1>
+    <p class="card-text"><%= simple_format(@post.body) %></p>
+    <p class="card-text">(<%= @post.body.split.size %> words)</p>
+
+    <h5 class="card-text"><b>tl;dr</b> <%= @post.tldr %></h5>
+    <br>
+    <div class="display-inline">
+    <div class='floatleft'>
+    <p class='btn btn-dark'><%= @post.user.username %></p>
+    <p class='btn btn-light'><%= @post.created_at.strftime("%d/%m/%Y")%></p>
+    <p class='btn btn-light'><%= distance_of_time_in_words(@post.created_at,Time.now)%> ago</p>
+    </div>
+    
+    <% if(current_user && @post.user==current_user) %>
+<div class="floatright">
+<%= link_to "Edit", edit_post_path(@post), :class => "btn btn-default" %>
+<%= link_to "Delete", post_path(@post),
+                        method: :delete,
+                        data: {confirm: "Are you sure?"}, 
+                        :class => "btn btn-danger" %>
+</div>
+<% end %>
+
+    </div>
+    </div>
+    </div>
+
+
+
+    <hr>
+
+<%= link_to "Back to Home", home_path, :class => "btn btn-primary" %>
+
+
+<hr>
+<table id='commentssection' style="width:100%">
+<thead>
+<tr>
+<th><h3>Comments (<%= @post.comments.size %>)</h3></th>
+</tr>
+</thead>
+<tbody>
+<% @post.comments.each do |comment| %>
+    <tr>
+    <td>
+    <div class='card'>
+    <div class='card-body'>
+    
+    <p><strong><%= comment.username %></strong> <%= distance_of_time_in_words(comment.created_at,Time.now)%> ago </p>
+    
+    <p><%= comment.body %></p>
+
+
+    <% if(current_user && comment.user_id == current_user.id) %>
+    <%= link_to 'delete', [comment.post,comment], method: :delete,
+    data: {confirm: "Are you sure?"}, :class => 'btn btn-danger' %>
+    <% end %>
+    
+    </div>
+    </div>
+    <br>
+    </td>
+    </tr>
+<% end %>
+</tbody>
+</Table>
+
+<script>$(document).ready(function() {
+    $('#commentssection').DataTable({
+        "bFilter": false,
+        "bLengthChange": false,
+        "pageLength": 5,
+        "ordering": false
+    });
+} );</script>
+
+
+
+
+
+
+
+
+
+
+<h3>Add Comment</h3>
+<%= form_for([@post, @post.comments.build]) do |f| %>
+    <p>
+        <%= f.label :username %><br>
+        <% if(current_user) %>
+        <%= f.text_field(:username, {:class => 'form-control', value: current_user.username,:placeholder => "#{current_user.username}"})%>
+        <% else %>
+        <%= f.text_field(:username, {:class => 'form-control'}) %>
+        <% end %>
+    </p>
+    <p>
+        <%= f.label :body %><br>
+        <%= f.text_area(:body, {:class => 'form-control'}) %>
+    </p>
+    <p>
+        <%= f.submit({:class => 'btn btn-default'}) %>
+    </p>
+<% end %>
+    

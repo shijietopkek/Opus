@@ -1,0 +1,58 @@
+<h1>New Post</h1>
+
+<%= form_for :post, url: posts_path do |f| %>
+    <% if @post.errors.any? %>
+        <% @post.errors.full_messages.each do |msg| %>
+            <div class="alert alert-danger"><%= msg %></div>
+        <% end %>
+    <% end %>
+
+
+    <p>
+    <%= f.label :title %><br>
+    <%= f.text_field(:title, {:class => "form-control"})%>
+    </p>
+
+    <p>
+    <%= f.label "tl;dr (Maximum 140 characters)" %><br>
+    <%= f.text_area(:tldr, {:class => "form-control", :id => "tldr_text"}) %>
+    Chars left: <span id="counter1"></span>
+    </p>
+
+    <p>
+    <%= f.label "#{:body} (Minimum 100 words)" %><br>
+    <%= f.text_area(:body, {:class => "form-control"}) %>
+    </p>
+
+    <p>
+    <%= f.submit({:class => "btn btn-primary"}) %>
+    </p>
+<% end %>
+
+
+
+
+
+
+<script>
+    $(document).ready(function() {
+      var tldr_text = $("#tldr_text");
+      var counter1     = $("#counter1");
+      var max_length  = 140;
+      var span1 = document.getElementById("counter1");
+
+      tldr_text.keyup(function() {
+          counter1.text(max_length - $(this).val().length);
+          if($(this).val().length > max_length){
+            counter1.text("Too many characters!");
+            span1.classList.add("red-text");
+          };
+      });
+
+      
+    });
+
+</script>
+
+
+
