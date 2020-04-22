@@ -1,7 +1,45 @@
+
+<% words = 0 %>
+<% entries = 0 %>
+<% @user.posts.each do |post| %>
+    <% words+=post.body.split.size %>
+    <% entries+=1 %>
+<% end %>
+<div class='card'>
+    <div class='card-body text-center'>
+<h4>
+<% if current_user && @user.id == current_user.id %>
+    I have
+<% else %>
+    <%= @user.username %> has
+<% end %>
+written <strong><%= entries %></strong> 
+
+<% if entries==1 %>
+entry
+<% else %>
+entries
+<% end %>
+
+so far with a cumulative word count of <strong><%= words %></strong>
+</h4>
+</div>
+</div>
+<br>
+
+
+
+
+
+
 <table id='postprofile' style="width:100%">
 <thead>
 <tr>
+<% if current_user && current_user.id==@user.id %>
 <th><h1>My Posts</h1></th>
+<% else %>
+<th><h1><%= @user.username %>'s Posts</h1></th>
+<% end %>
 </tr>
 </thead>
 <tbody>
@@ -18,6 +56,7 @@
     <div class="display-inline floatleft">
     <h3><%= link_to "#{post.title} (#{post.body.split.size} words)" , post_path(post), :class => "black-link"%></h3>
     </div>
+    <% if current_user && current_user.id==@user.id %>
 
     <div class='display-inline floatright'>
     <%= link_to "Edit", edit_post_path(post), :class => "btn btn-default" %>
@@ -26,6 +65,7 @@
                         data: {confirm: "Are you sure?"}, 
                         :class => "btn btn-danger" %>
                         </div>
+    <% end %>
                         <br><br>
                         <p class='btn btn-light'><%= post.created_at.strftime("%d/%m/%Y")%></p>
                         <p class='btn btn-light'><%= distance_of_time_in_words(post.created_at,Time.now)%> ago</p>
@@ -51,5 +91,6 @@
         "ordering": false
     });
 } );</script>
-
+<% if current_user && current_user.id==@user.id %>
 <%= link_to "Edit Profile",  edit_user_registration_path, :class=>"btn btn-primary btn-lg" %>
+<% end %>

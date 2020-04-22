@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, :path => 'u'
   Rails.application.routes.default_url_options[:host] = "XXX"
 
   root "posts#index", as:'home'
@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'profile' => "pages#profile", as:'profile'
   resources :posts do
     resources :comments
-  end
 
+  end
+  resources :users
 end

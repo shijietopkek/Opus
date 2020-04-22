@@ -37,7 +37,7 @@
     <% if current_user %>
     <ul class="navbar-nav navbar-right">
     <div class = "navbutton">
-      <li><%= link_to "Profile", profile_path,class: "nav-text" %></li>
+      <li><%= link_to "Profile", user_path(current_user),class: "nav-text" %></li>
       </div>
 
     <div class = "navbutton">
