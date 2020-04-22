@@ -136,3 +136,12 @@
 .red-text{
     color:red;
 }
+
+
+.white-text{
+    color: white;
+}
+
+.banner{
+    display:none;
+}
