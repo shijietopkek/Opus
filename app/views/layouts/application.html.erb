@@ -4,16 +4,23 @@
     <title>Opus20</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <%= stylesheet_link_tag    'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css' %>
-
-
+    <%= stylesheet_link_tag 'https://code.jquery.com/jquery-3.4.1.slim.min.js' %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'jquery.bootpag' %>
+    <%= javascript_include_tag 'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js' %>
     <%= javascript_include_tag "https://code.jquery.com/jquery-3.5.0.js"%>
     <%= javascript_include_tag  "https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" %>
     <%= javascript_include_tag "https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" %>
     <%= stylesheet_link_tag "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"%>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   </head>
 
   <body>
@@ -21,47 +28,43 @@
 
   <%= render "layouts/alerts" %>
   </div>
-  <nav id="navbar" class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+
+
+<nav id="navbar" class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
   <a class="navbar-brand" href=<%= about_path%>>Opus</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse">
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
-    <div class = "navbutton">
-      <li><%= link_to "Home", home_path,class: "nav-text"%> </li>
-      </div>
-      <div class = "navbutton">
-      <li><%= link_to "Create Post", new_post_path,class: "nav-text"%> </li>
-      </div>
+
+      <li class="nav-item active"><%= link_to "Home", home_path,class: "nav-text nav-link"%> </li>
+
+      <li class="nav-item"><%= link_to "Create Post", new_post_path,class: "nav-text nav-link"%> </li>
+
     </ul>
 
  
     <% if current_user %>
     <ul class="navbar-nav navbar-right">
-    <div class = "navbutton">
-      <li><%= link_to "Profile", user_path(current_user),class: "nav-text" %></li>
-      </div>
+      <li class='nav-item'><%= link_to "Profile", user_path(current_user),class: "nav-text nav-link" %></li>
+   
 
-    <div class = "navbutton">
-      <li><%= link_to "Sign Out", destroy_user_session_path,class: "nav-text", method: :delete %></li>
-      </div>
+      <li class="nav-item"><%= link_to "Sign Out", destroy_user_session_path,class: "nav-text nav-link", method: :delete %></li>
     </ul>
     <% else %>
     <ul class="navbar-nav navbar-right">
-    <div class = "navbutton">
-      <li><%= link_to "Sign Up", new_user_registration_path,class: "nav-text" %> </li>
-      </div>
-      <div class = "navbutton">
-      <li><%= link_to "Log in", new_user_session_path,class: "nav-text" %> </li>
-      </div>
+      <li class="nav-item"><%= link_to "Sign Up", new_user_registration_path,class: "nav-text nav-link" %> </li>
+      <li class="nav-item"><%= link_to "Log in", new_user_session_path,class: "nav-text nav-link" %> </li>
     </ul>
     <% end %>
-    
+  
     
   </div>
 </nav>
+
+
 <br>
 <br>
 <br>
@@ -71,6 +74,7 @@
 
     <%= yield %>
     </div>
-   
   </body>
 </html>
+
+
