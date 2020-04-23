@@ -1,18 +1,5 @@
 
 
-<% if(notice) %>
-<p class="notice banner "><mark><%= notice %></mark></p>
-<% end %>
-<% if(alert) %>
+<p class="notice banner"><mark><%= notice %></mark></p>
 <p class="alert banner"><mark><%= alert %></mark></p>
-<% end %>
 
-<script>
-setTimeout(function() {
-  $('.banner').fadeIn();
-  
-  setTimeout(function() {
-    $('.banner').fadeOut().remove();
-  }, 2000);
-}, 100);
-</script>
