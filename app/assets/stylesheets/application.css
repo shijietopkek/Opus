@@ -145,3 +145,8 @@
 .banner{
     display:none;
 }
+
+.bottom{
+    display: table;
+  margin: 0 auto;
+}

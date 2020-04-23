@@ -86,8 +86,8 @@ so far with a cumulative word count of <strong><%= words %></strong> and an aver
 
 <script>$(document).ready(function() {
     $('#postprofile').DataTable({
+        "dom": 'rti<"bottom"p<"clear">>',
         "bFilter": false,
-        "bLengthChange": false,
         "pageLength": 5,
         "ordering": false
     });
