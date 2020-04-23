@@ -1,6 +1,11 @@
-<p class="notice banner "><mark><%= notice %></mark></p>
-<p class="alert banner"><mark><%= alert %></mark></p>
 
+
+<% if(notice) %>
+<p class="notice banner "><mark><%= notice %></mark></p>
+<% end %>
+<% if(alert) %>
+<p class="alert banner"><mark><%= alert %></mark></p>
+<% end %>
 
 <script>
 setTimeout(function() {
