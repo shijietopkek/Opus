@@ -3,6 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.5'
 
+gem 'acts_as_votable'
+gem 'acts_as_starable'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.2'
 # Use sqlite3 as the database for Active Record
@@ -63,3 +65,4 @@ gem 'devise'
 gem 'word-count-validator', '~> 1.0'
 
 gem 'pg', '~> 1.2', '>= 1.2.3'
+gem 'acts_as_votable'

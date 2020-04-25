@@ -150,3 +150,28 @@
     display: table;
   margin: 0 auto;
 }
+
+.form-body{
+    padding-top:30px;
+}
+
+.fa-times-circle{
+    color:red;
+}
+
+#newUserCreatePost{
+    margin-top:50px;
+    margin-bottom:50px;
+    font-size:1.5em;
+}
+
+.starred{
+    color:yellow !important;
+    text-shadow: 0 0 3px #000;
+}
+
+
+.unstarred{
+    color: #fff !important;
+    text-shadow: 0 0 3px #000;
+}

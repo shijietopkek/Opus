@@ -1,20 +1,28 @@
 
 
 <div class='card'>
+
     <div class='card-body'>
-    <h1 class="card-title"><%= @post.title %></h1>
+    <h1 class="card-title"><%= @post.title %> (<%= @post.body.split.size %> words)</h1>
+    <div class='floatleft'>
+
+    <%= link_to @post.user.username, user_path(@post.user), :class=>'btn btn-dark'%>
+    <%= render 'users/category', post_category: @post.category%>
+    <a class='btn btn-light'><%= @post.created_at.strftime("%d/%m/%Y")%></a>
+    <a class='btn btn-light'><%= distance_of_time_in_words(@post.created_at,Time.now)%> ago</a>
+    
+    </div>
+    <br>
+    <div class="form-body">
     <p class="card-text"><%= simple_format(@post.body) %></p>
     <p class="card-text">(<%= @post.body.split.size %> words)</p>
 
     <h5 class="card-text"><b>tl;dr</b> <%= @post.tldr %></h5>
+    </div>
     <br>
     <div class="display-inline">
-    <div class='floatleft'>
 
-    <%= link_to @post.user.username, user_path(@post.user), :class=>'btn btn-dark'%>
-    <a class='btn btn-light'><%= @post.created_at.strftime("%d/%m/%Y")%></a>
-    <a class='btn btn-light'><%= distance_of_time_in_words(@post.created_at,Time.now)%> ago</a>
-    </div>
+    
     
     <% if(current_user && @post.user==current_user) %>
 <div class="floatright">
@@ -70,14 +78,6 @@
 </tbody>
 </Table>
 
-<script>$(document).ready(function() {
-    $('#commentssection').DataTable({
-        "dom": 'rti<"bottom"p<"clear">>',
-        "bFilter": false,
-        "pageLength": 5,
-        "ordering": false
-    });
-} );</script>
 
 
 
@@ -104,4 +104,5 @@
         <%= f.submit({:class => 'btn btn-default'}) %>
     </p>
 <% end %>
-    
+
+<%= hidden_field_tag :action_name, "showusers" %>

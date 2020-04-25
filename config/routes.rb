@@ -6,7 +6,17 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get 'about' => "pages#about", as:'about'
   get 'profile' => "pages#profile", as:'profile'
-  resources :posts do
+
+
+  resources :stars
+                                                              
+
+  resources :posts do   
+    member do
+      get 'star', to: "posts#star"
+      get 'unstar', to:"posts#unstar"
+    end
+    
     resources :comments
 
   end

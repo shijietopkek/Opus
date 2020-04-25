@@ -1,11 +1,13 @@
 class User < ApplicationRecord
+  acts_as_voter
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, authentication_keys: [:login]
-
+  
   
 validates :username, presence: true, uniqueness: { case_sensitive: false }
 validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true

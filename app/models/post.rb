@@ -1,9 +1,11 @@
 class Post < ApplicationRecord
+  acts_as_votable
   belongs_to :user
   has_many :comments, dependent: :destroy
     validates :title, presence: true
     validates :body, presence: true
     validate :check_for_words
+
 
 def check_for_words
       if self.body.split.size < 100

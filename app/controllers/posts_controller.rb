@@ -26,7 +26,7 @@ class PostsController < ApplicationController
     def update
         @post = Post.find(params[:id])
         if(@post.update(post_params))
-            redirect_to @post
+            redirect_to post_path
         else
             render 'edit'
         end
@@ -35,12 +35,44 @@ class PostsController < ApplicationController
     def destroy
         @post = Post.find(params[:id])
         @post.destroy
-        redirect_to posts_path
+
+        #*
+        if request.referer == post_url(id: params[:id])
+            redirect_to posts_path
+        else 
+            redirect_back(fallback_location:user_path)
+        end
+        # case URI(request.referer).path 
+        # when ''
+        # if params[:action_name] == 'showusers'
+        #     redirect_back(fallback_location:user_path)
+        # elsif params[:action_name] == "showposts"
+        #     reirect_to posts_path
+        # end
     end
+
+    def star
+        @post = Post.find(params[:id])
+        @post.liked_by current_user
+        redirect_back(fallback_location: home_path)
+
+    end
+
+    def unstar
+        @post = Post.find(params[:id])
+        @post.unliked_by current_user
+        redirect_back(fallback_location: home_path)
+
+    end
+
+
+
+
+
 
 
     
     private def post_params
-        params.require(:post).permit(:title, :tldr, :body)
+        params.require(:post).permit(:title, :tldr, :body, :category)
     end
 end

@@ -12,7 +12,10 @@
     <%= f.label :title %><br>
     <%= f.text_field(:title, {:class => "form-control"})%>
     </p>
-
+    <p>
+    <%= f.label :category %><br>
+    <%= f.select :category, ['GP Essay', 'Non-GP Essay', 'Poetry','Story: Fiction','Story: Non-Fiction','Others'],{:class => "form-control"}%>
+    </p>
     <p>
     <%= f.label "tl;dr (Maximum 140 characters)" %><br>
     <%= f.text_area(:tldr, {:class => "form-control", :id => "tldr_text"}) %>
