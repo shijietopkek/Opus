@@ -1,6 +1,6 @@
 
 
-$(document).ready(function() {
+$(window).ready(function() {
     $('#votes').DataTable({
         "dom": 'rti<"bottom"p<"clear">>',
         "bFilter": false,
@@ -10,7 +10,7 @@ $(document).ready(function() {
     $.fn.dataTable.ext.errMode = 'none';
 } );
 
-$(document).ready(function() {
+$(window).ready(function() {
     $('#commentssection').DataTable({
         "dom": 'rti<"bottom"p<"clear">>',
         "bFilter": false,
@@ -20,7 +20,7 @@ $(document).ready(function() {
     $.fn.dataTable.ext.errMode = 'none';
 } );
 
-$(document).ready(function() {
+$(window).ready(function() {
     $('#postprofile').DataTable({
         "dom": 'rti<"bottom"p<"clear">>',
         "bFilter": false,
@@ -31,7 +31,7 @@ $(document).ready(function() {
 } );
 
 
-$(document).ready(function() {
+$(window).ready(function() {
     $('#index').DataTable({
         "dom": 'rti<"bottom"p<"clear">>',
         "bFilter": false,

@@ -41,7 +41,9 @@
 
 
     <hr>
-
+   
+    
+   
 <%= link_to "Back to Home", home_path, :class => "btn btn-primary" %>
 
 
@@ -74,17 +76,10 @@
     <br>
     </td>
     </tr>
+    
 <% end %>
 </tbody>
 </Table>
-
-
-
-
-
-
-
-
 
 <h3>Add Comment</h3>
 <%= form_for([@post, @post.comments.build]) do |f| %>
@@ -104,5 +99,12 @@
         <%= f.submit({:class => 'btn btn-default'}) %>
     </p>
 <% end %>
-
 <%= hidden_field_tag :action_name, "showusers" %>
+
+
+
+
+
+
+
+

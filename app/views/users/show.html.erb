@@ -66,7 +66,6 @@ so far with a cumulative word count of <strong><%= words %></strong> and an aver
     </div>
     
                         <br>
-                        <br>
                         <%= render 'category', post_category: post.category%>
                         <%if false %>
                         <a class='btn btn-deep-purple'><%= post.category%></a>
@@ -128,7 +127,6 @@ This place feels a little empty. Why not create your first post?
     </h3>
     </div>
     
-                        <br>
                         <br>
                         <%= link_to post.user.username, user_path(post.user), :class=>'btn btn-dark'%>
                         <%= render 'category', post_category: post.category%>
