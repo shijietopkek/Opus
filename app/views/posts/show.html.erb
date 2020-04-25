@@ -6,10 +6,10 @@
     <h1 class="card-title"><%= @post.title %> (<%= @post.body.split.size %> words)</h1>
     <div class='floatleft'>
 
-    <%= link_to @post.user.username, user_path(@post.user), :class=>'btn btn-dark'%>
+    <%= link_to @post.user.username, user_path(@post.user), :class=>'btn btn-dark btn-tags'%>
     <%= render 'users/category', post_category: @post.category%>
-    <a class='btn btn-light'><%= @post.created_at.strftime("%d/%m/%Y")%></a>
-    <a class='btn btn-light'><%= distance_of_time_in_words(@post.created_at,Time.now)%> ago</a>
+    <a class='btn btn-light btn-tags'><%= @post.created_at.strftime("%d/%m/%Y")%></a>
+    <a class='btn btn-light btn-tags'><%= distance_of_time_in_words(@post.created_at,Time.now)%> ago</a>
     
     </div>
     <br>
@@ -26,11 +26,11 @@
     
     <% if(current_user && @post.user==current_user) %>
 <div class="floatright">
-<%= link_to "Edit", edit_post_path(@post), :class => "btn btn-default" %>
+<%= link_to "Edit", edit_post_path(@post), :class => "btn btn-default btn-tags" %>
 <%= link_to "Delete", post_path(@post),
                         method: :delete,
                         data: {confirm: "Are you sure?"}, 
-                        :class => "btn btn-danger" %>
+                        :class => "btn btn-danger btn-tags" %>
 </div>
 <% end %>
 
@@ -68,7 +68,7 @@
 
     <% if(current_user && comment.user_id == current_user.id) %>
     <%= link_to 'delete', [comment.post,comment], method: :delete,
-    data: {confirm: "Are you sure?"}, :class => 'btn btn-danger' %>
+    data: {confirm: "Are you sure?"}, :class => 'btn btn-danger btn-tags' %>
     <% end %>
     
     </div>

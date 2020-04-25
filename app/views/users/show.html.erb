@@ -68,10 +68,10 @@ so far with a cumulative word count of <strong><%= words %></strong> and an aver
                         <br>
                         <%= render 'category', post_category: post.category%>
                         <%if false %>
-                        <a class='btn btn-deep-purple'><%= post.category%></a>
+                        <a class='btn btn-deep-purple btn-tags'><%= post.category%></a>
                         <%end%>
-                        <a class='btn btn-light'><%= post.created_at.strftime("%d/%m/%Y")%></a>
-                        <a class='btn btn-light'><%= distance_of_time_in_words(post.created_at,Time.now)%> ago</a>
+                        <a class='btn btn-light btn-tags'><%= post.created_at.strftime("%d/%m/%Y")%></a>
+                        <a class='btn btn-light btn-tags'><%= distance_of_time_in_words(post.created_at,Time.now)%> ago</a>
 
 
 
@@ -128,13 +128,13 @@ This place feels a little empty. Why not create your first post?
     </div>
     
                         <br>
-                        <%= link_to post.user.username, user_path(post.user), :class=>'btn btn-dark'%>
+                        <%= link_to post.user.username, user_path(post.user), :class=>'btn btn-dark btn-tags'%>
                         <%= render 'category', post_category: post.category%>
                         <%if false %>
-                        <a class='btn btn-deep-purple'><%= post.category%></a>
+                        <a class='btn btn-deep-purple btn-tags'><%= post.category%></a>
                         <%end%>
-                        <a class='btn btn-light'><%= post.created_at.strftime("%d/%m/%Y")%></a>
-                        <a class='btn btn-light'><%= distance_of_time_in_words(post.created_at,Time.now)%> ago</a>
+                        <a class='btn btn-light btn-tags'><%= post.created_at.strftime("%d/%m/%Y")%></a>
+                        <a class='btn btn-light btn-tags'><%= distance_of_time_in_words(post.created_at,Time.now)%> ago</a>
 
 
 

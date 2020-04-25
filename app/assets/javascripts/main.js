@@ -2,37 +2,38 @@
 
 $(window).ready(function() {
     $('#votes').DataTable({
+        "destroy":true,
         "dom": 'rti<"bottom"p<"clear">>',
         "bFilter": false,
         "pageLength": 5,
         "ordering": false
     });
-    $.fn.dataTable.ext.errMode = 'none';
 } );
 
 $(window).ready(function() {
     $('#commentssection').DataTable({
+        "destroy":true,
         "dom": 'rti<"bottom"p<"clear">>',
         "bFilter": false,
         "pageLength": 5,
         "ordering": false
     });
-    $.fn.dataTable.ext.errMode = 'none';
 } );
 
 $(window).ready(function() {
     $('#postprofile').DataTable({
+        "destroy":true,
         "dom": 'rti<"bottom"p<"clear">>',
         "bFilter": false,
         "pageLength": 5,
         "ordering": false
     });
-    $.fn.dataTable.ext.errMode = 'none';
 } );
 
 
 $(window).ready(function() {
     $('#index').DataTable({
+        "destroy":true,
         "dom": 'rti<"bottom"p<"clear">>',
         "bFilter": false,
         "pageLength": 5,

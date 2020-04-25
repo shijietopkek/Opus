@@ -14,10 +14,10 @@
     <h3 class="card-title"><%= link_to "#{post.title} (#{post.body.split.size} words)", post_path(post), :class => 'black-link' %></h3>
     <p class="card-text"><%= post.tldr %></p>
     <div class="post-preview-container">
-    <%= link_to post.user.username, user_path(post.user), :class=>'btn btn-dark'%>
+    <%= link_to post.user.username, user_path(post.user), :class=>'btn btn-dark btn-tags'%>
     <%= render 'users/category', post_category: post.category%>
-    <a class='btn btn-light'><%= post.created_at.strftime("%d/%m/%Y")%></a>
-    <a class='btn btn-light'><%= distance_of_time_in_words(post.created_at,Time.now)%> ago</a>
+    <a class='btn btn-light btn-tags'><%= post.created_at.strftime("%d/%m/%Y")%></a>
+    <a class='btn btn-light btn-tags'><%= distance_of_time_in_words(post.created_at,Time.now)%> ago</a>
 
     
 
@@ -30,5 +30,5 @@
     </tr>
 <% end %>
 </tbody>
-</Table>
+</table>
 
