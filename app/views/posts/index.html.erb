@@ -9,26 +9,11 @@
 <% @posts.each do |post| %>
     <tr>
     <td>
-    <div class='card'>
-    <div class='card-body'>
-    <h3 class="card-title"><%= link_to "#{post.title} (#{post.body.split.size} words)", post_path(post), :class => 'black-link' %></h3>
-    <p class="card-text"><%= post.tldr %></p>
-    <div class="post-preview-container">
-    <%= link_to post.user.username, user_path(post.user), :class=>'btn btn-dark btn-tags'%>
-    <%= render 'users/category', post_category: post.category%>
-    <a class='btn btn-light btn-tags'><%= post.created_at.strftime("%d/%m/%Y")%></a>
-    <a class='btn btn-light btn-tags'><%= distance_of_time_in_words(post.created_at,Time.now)%> ago</a>
-
-    
-
-    </div>
-    </div>
-
-    </div>
-    <br>
+    <%= render partial: "/posts/post",locals: {post: post}%>
     </td>
     </tr>
 <% end %>
 </tbody>
 </table>
 
+<script>

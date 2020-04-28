@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, authentication_keys: [:login]
+         :recoverable, :rememberable, :validatable,  authentication_keys: [:login]
   
   
 validates :username, presence: true, uniqueness: { case_sensitive: false }

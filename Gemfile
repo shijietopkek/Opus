@@ -64,3 +64,4 @@ gem 'word-count-validator', '~> 1.0'
 
 gem 'pg', '~> 1.2', '>= 1.2.3'
 gem 'acts_as_votable'
+gem 'jquery-rails'

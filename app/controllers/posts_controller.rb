@@ -54,14 +54,20 @@ class PostsController < ApplicationController
     def star
         @post = Post.find(params[:id])
         @post.liked_by current_user
-        redirect_back(fallback_location: home_path)
+        respond_to do |format|
+            format.html {redirect_back(fallback_location: home_path)}
+            format.js
+        end
 
     end
 
     def unstar
         @post = Post.find(params[:id])
         @post.unliked_by current_user
-        redirect_back(fallback_location: home_path)
+        respond_to do |format|
+            format.html {redirect_back(fallback_location: home_path)}
+            format.js
+        end
 
     end
 

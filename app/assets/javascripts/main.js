@@ -40,6 +40,3 @@ $(window).ready(function() {
         "ordering": false
     });
 } );
-
-
-

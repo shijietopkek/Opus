@@ -1,0 +1,43 @@
+<div class='card'>
+
+    <div class='card-body displayflex'>
+    <div class='star-div' id="star_div_<%=post.id%>">
+
+    <div class='star-div-1' id="star_div_1_<%=post.id%>">
+    <% if current_user.liked? post %>
+    <%= link_to '', unstar_post_path(post), remote:true, id:"star_#{post.id}", class:"fas fa-star fa-3x starred" %>
+    <% else %>
+    <%= link_to '', star_post_path(post), remote:true, id:"star_#{post.id}",class:"fas fa-star fa-3x unstarred" %>
+    <% end %>
+    <div id="stars_<%=post.id%>"><h4><%= post.get_upvotes.size %></h4></div>
+    </div>
+
+    
+
+
+
+    </div>
+
+    <div class="star-div-frame"></div>
+    <div class='vertical-border'></div>
+    <div class='post-content'>
+
+    <h3 class="card-title"><%= link_to "#{post.title} (#{post.body.split.size} words)", post_path(post), :class => 'black-link' %></h3>
+    <p class="card-text"><%= post.tldr %></p>
+    <div class="post-preview-container">
+    <%= link_to post.user.username, user_path(post.user), :class=>'btn btn-dark btn-tags'%>
+    <%= render 'users/category', post_category: post.category%>
+    <a class='btn btn-light btn-tags'><%= post.created_at.strftime("%d/%m/%Y")%></a>
+    <a class='btn btn-light btn-tags'><%= distance_of_time_in_words(post.created_at,Time.now)%> ago</a>
+    
+    </div>
+
+    </div>
+    </div>
+
+</div>
+<br>
+
+
+
+

@@ -67,9 +67,6 @@ so far with a cumulative word count of <strong><%= words %></strong> and an aver
     
                         <br>
                         <%= render 'category', post_category: post.category%>
-                        <%if false %>
-                        <a class='btn btn-deep-purple btn-tags'><%= post.category%></a>
-                        <%end%>
                         <a class='btn btn-light btn-tags'><%= post.created_at.strftime("%d/%m/%Y")%></a>
                         <a class='btn btn-light btn-tags'><%= distance_of_time_in_words(post.created_at,Time.now)%> ago</a>
 
@@ -104,6 +101,8 @@ This place feels a little empty. Why not create your first post?
 <table id='votes' style="width:100%">
 <thead>
 <tr>
+
+
 <% if current_user && current_user.id==@user.id %>
 <th><h1>My Starred Posts</h1></th>
 <% else %>
@@ -115,33 +114,7 @@ This place feels a little empty. Why not create your first post?
 <% @user.find_liked_items.each do |post| %>
     <tr>
     <td>
-    <div class='card'>
-    <div class='card-body'>
-    
-
-
-
-    <div>
-    <div class="display-inline ">
-    <h3><%= link_to "#{post.title} (#{post.body.split.size} words)" , post_path(post), :class => "black-link"%>
-    </h3>
-    </div>
-    
-                        <br>
-                        <%= link_to post.user.username, user_path(post.user), :class=>'btn btn-dark btn-tags'%>
-                        <%= render 'category', post_category: post.category%>
-                        <%if false %>
-                        <a class='btn btn-deep-purple btn-tags'><%= post.category%></a>
-                        <%end%>
-                        <a class='btn btn-light btn-tags'><%= post.created_at.strftime("%d/%m/%Y")%></a>
-                        <a class='btn btn-light btn-tags'><%= distance_of_time_in_words(post.created_at,Time.now)%> ago</a>
-
-
-
-</div>
-    </div>
-    </div>
-    <br>
+    <%= render partial: "/posts/post",locals: {post: post}%>
 
     </td>
     </tr>

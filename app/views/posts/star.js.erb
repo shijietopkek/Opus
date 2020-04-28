@@ -1,0 +1,3 @@
+$("#star_<%= @post.id%>").removeClass('unstarred').addClass('starred')
+$("#star_<%= @post.id%>").attr("href","<%=unstar_post_path(@post)%>")
+$("#stars_<%= @post.id%>").html("<h4><%=@post.get_upvotes.size%></h4>")

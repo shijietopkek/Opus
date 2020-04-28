@@ -2,7 +2,7 @@ class Post < ApplicationRecord
   acts_as_votable
   belongs_to :user
   has_many :comments, dependent: :destroy
-    validates :title, presence: true
+    validates :title, presence: true, length: {:maximum => 200}
     validates :body, presence: true
     validate :check_for_words
 

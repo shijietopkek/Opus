@@ -167,13 +167,46 @@
 
 .starred{
     color:yellow !important;
-    text-shadow: 0 0 3px #000;
+}
+
+.starred-test{
+    color:blue !important;
 }
 
 
 .unstarred{
     color: #fff !important;
-    text-shadow: 0 0 3px #000;
+}
+
+.star-div{
+    flex:8%;    
+
+}
+
+
+.star-div-1{
+    text-align:center;
+    margin-top: 35%;
+
+    
+}
+
+.fa-star{
+    margin-bottom:5px;
+    text-shadow: 0px 0px 2px #121212, 0px 0px 2px #121212;
+}
+
+.post-content{
+    flex:90%;
+    word-break:break-all;
+}
+
+.vertical-border{
+    flex:2%;
+}
+.displayflex{
+    display:flex;
+    
 }
 
 .btn-tags{
