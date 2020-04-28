@@ -4,7 +4,7 @@
     <div class='star-div' id="star_div_<%=post.id%>">
 
     <div class='star-div-1' id="star_div_1_<%=post.id%>">
-    <% if current_user.liked? post %>
+    <% if (current_user && (current_user.liked? post)) %>
     <%= link_to '', unstar_post_path(post), remote:true, id:"star_#{post.id}", class:"fas fa-star fa-3x starred" %>
     <% else %>
     <%= link_to '', star_post_path(post), remote:true, id:"star_#{post.id}",class:"fas fa-star fa-3x unstarred" %>
