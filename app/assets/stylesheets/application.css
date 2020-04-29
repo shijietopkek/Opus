@@ -179,32 +179,46 @@
 }
 
 .star-div{
-    flex:8%;    
+    flex:7%;  
+    z-index:2;  
 
 }
 
 
 .star-div-1{
     text-align:center;
-    margin-top: 35%;
+    margin-top: 0;
+    word-break:break-all;
 
     
 }
 
 .fa-star{
     margin-bottom:5px;
-    text-shadow: 0px 0px 2px #121212, 0px 0px 2px #121212;
+
 }
 
 .post-content{
     flex:90%;
-    word-break:break-all;
+
+ -ms-word-break: break-all;
+ word-break: break-all;
+
+ /* Non standard for WebKit */
+ word-break: break-word;
+
+-webkit-hyphens: auto;
+-moz-hyphens: auto;
+    hyphens: auto;
+  
 }
 
+
+
 .vertical-border{
-    flex:2%;
+    flex:3%;
 }
-.displayflex{
+.display-flex{
     display:flex;
     
 }
@@ -217,4 +231,66 @@
     margin-right:0.25em !important;
     margin-left:0em !important;
     margin-bottom:0.25em !important;
+}
+
+
+  .ribbon {
+   width: 75px;
+   padding: 10px 0;
+   position: absolute;
+   top: -8px;
+   left: 1.25rem;
+   height:100px;
+   text-align: center;
+   border-top-left-radius: 3px;
+   background: #00bfff;
+   z-index:1;
+  }
+  .ribbon:before {
+   height: 0;
+   width: 0;
+   right: -5.5px;
+   top: 0.1px;
+   border-bottom: 8px solid #2C528C;
+   border-right: 6px solid transparent;
+  }
+  .ribbon:before, .ribbon:after {
+    content: "";
+    position: absolute;
+  }
+  .ribbon:after {
+    height: 0;
+    width: 0;
+    bottom: -37px;
+    left: 0;
+    border-left: 37.5px solid #00bfff;
+    border-right: 38px solid #00bfff;
+    border-bottom: 37.5px solid transparent;
+  }
+
+.star-text{
+    color:#fff;
+}
+
+@media screen and (max-device-width: 812px){
+    .display-flex{
+        display:inline;
+    }
+    .ribbon{
+        visibility:hidden;
+    }
+    .fa-star{
+        text-shadow: 0px 0px 1px #000,0px 0px 1px #000;
+        margin-right: 5px;
+    }
+    .star-div-1{
+        display:inline-flex;
+    }
+
+    .star-text{
+        color:#121212;
+    }
+
+
+
 }

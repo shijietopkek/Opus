@@ -1,28 +1,43 @@
 <div class='card'>
+    <div class="ribbon"></div>
 
-    <div class='card-body displayflex'>
+
+    <div class='card-body display-flex'>
+
+
+
+
     <div class='star-div' id="star_div_<%=post.id%>">
 
     <div class='star-div-1' id="star_div_1_<%=post.id%>">
     <% if (current_user && (current_user.liked? post)) %>
-    <%= link_to '', unstar_post_path(post), remote:true, id:"star_#{post.id}", class:"fas fa-star fa-3x starred" %>
+    <h4>
+    <%= link_to '', unstar_post_path(post), remote:true, id:"star_#{post.id}", class:"fas fa-star starred" %>
+    </h4>
     <% else %>
-    <%= link_to '', star_post_path(post), remote:true, id:"star_#{post.id}",class:"fas fa-star fa-3x unstarred" %>
+    <h4>
+    <%= link_to '', star_post_path(post), remote:true, id:"star_#{post.id}",class:"fas fa-star unstarred" %>
+    </h4>
     <% end %>
-    <div id="stars_<%=post.id%>"><h4><%= post.get_upvotes.size %></h4></div>
+    <div class="fa-star-text" id="stars_<%=post.id%>"><h4 class='star-text'><%= post.get_upvotes.size %></h4></div>
     </div>
 
     
 
 
 
+
     </div>
 
-    <div class="star-div-frame"></div>
+  
     <div class='vertical-border'></div>
     <div class='post-content'>
 
-    <h3 class="card-title"><%= link_to "#{post.title} (#{post.body.split.size} words)", post_path(post), :class => 'black-link' %></h3>
+    <h4 class="card-title">
+    <%= link_to "#{post.title} (#{post.body.split.size} words)", post_path(post), :class => 'black-link' %>
+    <%= render partial: "/posts/editdelbtn", locals: {post: post} %>
+    
+    </h4>
     <p class="card-text"><%= post.tldr %></p>
     <div class="post-preview-container">
     <%= link_to post.user.username, user_path(post.user), :class=>'btn btn-dark btn-tags'%>
@@ -31,7 +46,7 @@
     <a class='btn btn-light btn-tags'><%= distance_of_time_in_words(post.created_at,Time.now)%> ago</a>
     
     </div>
-
+        
     </div>
     </div>
 

@@ -40,3 +40,7 @@ $(window).ready(function() {
         "ordering": false
     });
 } );
+
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+  });

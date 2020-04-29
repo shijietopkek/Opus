@@ -43,40 +43,7 @@ so far with a cumulative word count of <strong><%= words %></strong> and an aver
 <% @user.posts.each do |post| %>
     <tr>
     <td>
-    <div class='card'>
-    <div class='card-body'>
-    
-
-
-
-    <div>
-    <div class="display-inline ">
-    <h3><%= link_to "#{post.title} (#{post.body.split.size} words)" , post_path(post), :class => "black-link"%>
-    <% if current_user && current_user.id==@user.id %>
-
-    
-    <%= link_to '<i class="fas fa-edit "></i>'.html_safe, edit_post_path(post) %>
-
-
-<%= link_to '<i class="far fa-times-circle "></i>'.html_safe, post_path(post),
-                        method: :delete,
-                        data: {confirm: "Are you sure?"} %>
-                        
-    <% end %></h3>
-    </div>
-    
-                        <br>
-                        <%= render 'category', post_category: post.category%>
-                        <a class='btn btn-light btn-tags'><%= post.created_at.strftime("%d/%m/%Y")%></a>
-                        <a class='btn btn-light btn-tags'><%= distance_of_time_in_words(post.created_at,Time.now)%> ago</a>
-
-
-
-</div>
-    </div>
-    </div>
-    <br>
-
+        <%= render partial: "/posts/post", locals: {post: post}%>
     </td>
     </tr>
 <% end %>
