@@ -13,6 +13,14 @@
  *= require_tree .
  *= require_self
  */
+ @import "bootstrap";
+ 
+body{
+     font-family:Arial, Helvetica, sans-serif !important;
+ }
+.container{
+    max-width:940px;
+}
 .navbutton{
     padding-right: 20px;
     padding-left: 20px;
@@ -152,7 +160,7 @@
 }
 
 .form-body{
-    padding-top:30px;
+    padding-top:20px;
 }
 
 .fa-times-circle{
@@ -193,13 +201,13 @@
     
 }
 
-.fa-star{
-    margin-bottom:5px;
+.fa-star-wrapper{
+    margin-bottom:.2rem;
 
 }
 
 .post-content{
-    flex:90%;
+    flex:84%;
 
  -ms-word-break: break-all;
  word-break: break-all;
@@ -213,6 +221,10 @@
   
 }
 
+.edit-del-div{
+    flex:3%;
+    text-align:left;
+}
 
 
 .vertical-border{
@@ -235,7 +247,7 @@
 
 
   .ribbon {
-   width: 75px;
+   width: 61px;
    padding: 10px 0;
    position: absolute;
    top: -8px;
@@ -261,18 +273,21 @@
   .ribbon:after {
     height: 0;
     width: 0;
-    bottom: -37px;
+    bottom: -30px;
     left: 0;
-    border-left: 37.5px solid #00bfff;
-    border-right: 38px solid #00bfff;
-    border-bottom: 37.5px solid transparent;
+    border-left: 30.5px solid #00bfff;
+    border-right: 31px solid #00bfff;
+    border-bottom: 30.5px solid transparent;
   }
 
 .star-text{
     color:#fff;
 }
 
-@media screen and (max-device-width: 812px){
+@media (max-device-width: 812px){
+    h1{
+
+    }
     .display-flex{
         display:inline;
     }
@@ -289,6 +304,15 @@
 
     .star-text{
         color:#121212;
+    }
+    .edit-del-div{
+        float: right;
+
+position: absolute;
+
+right: 1.25rem;
+
+top: 1.25rem;
     }
 
 

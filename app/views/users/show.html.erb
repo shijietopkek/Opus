@@ -1,54 +1,25 @@
 <% if @user.posts.size>0 %>
-<% words = 0 %>
-<% entries = 0 %>
-<% @user.posts.each do |post| %>
-    <% words+=post.body.split.size %>
-    <% entries+=1 %>
-<% end %>
-<div class='card'>
-    <div class='card-body text-center'>
-<h4>
-<% if current_user && @user.id == current_user.id %>
-    I have
-<% else %>
-    <%= @user.username %> has
-<% end %>
-written <strong><%= entries %></strong> 
 
-<% if entries==1 %>
-entry
-<% else %>
-entries
-<% end %>
+<%= render partial: "/users/summary", locals: {user: @user} %>
 
-so far with a cumulative word count of <strong><%= words %></strong> and an average word count of <strong><%= words/entries %></strong> per entry.
-</h4>
-</div>
-</div>
+
 <br>
 
-
-
-<table id='postprofile' style="width:100%">
-<thead>
-<tr>
 <% if current_user && current_user.id==@user.id %>
-<th><h1>My Posts</h1></th>
+<h1>My Posts</h1>
 <% else %>
-<th><h1><%= @user.username %>'s Posts</h1></th>
+<h1><%= @user.username %>'s Posts</h1>
 <% end %>
-</tr>
-</thead>
-<tbody>
-<% @user.posts.each do |post| %>
-    <tr>
-    <td>
+<hr>
+<% @user_posts.each do |post| %>
+
         <%= render partial: "/posts/post", locals: {post: post}%>
-    </td>
-    </tr>
+
 <% end %>
-</tbody>
-</Table>
+
+<div class="pagination justify-content-center">
+<%= will_paginate @user_posts, renderer: WillPaginate::ActionView::BootstrapLinkRenderer%>
+</div>
 
 
 <% else %>
@@ -65,29 +36,24 @@ This place feels a little empty. Why not create your first post?
 
 <%end%>
 
-<table id='votes' style="width:100%">
-<thead>
-<tr>
+
 
 
 <% if current_user && current_user.id==@user.id %>
-<th><h1>My Starred Posts</h1></th>
+<h1>My Starred Posts</h1>
 <% else %>
-<th><h1><%= @user.username %>'s Starred Posts</h1></th>
+<h1><%= @user.username %>'s Starred Posts</h1>
 <% end %>
-</tr>
-</thead>
-<tbody>
-<% @user.find_liked_items.each do |post| %>
-    <tr>
-    <td>
-    <%= render partial: "/posts/post",locals: {post: post}%>
+<hr>
 
-    </td>
-    </tr>
+<% @user_starred_posts.each do |post| %>
+
+    <%= render partial: "/posts/post",locals: {post: post}%>
 <% end %>
-</tbody>
-</Table>
+
+<div class="pagination justify-content-center">
+<%= will_paginate @user_starred_posts, renderer: WillPaginate::ActionView::BootstrapLinkRenderer%>
+</div>
 
 
 

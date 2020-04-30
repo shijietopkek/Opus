@@ -47,6 +47,8 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+
+
 end
 
 group :test do
@@ -65,3 +67,6 @@ gem 'word-count-validator', '~> 1.0'
 gem 'pg', '~> 1.2', '>= 1.2.3'
 gem 'acts_as_votable'
 gem 'jquery-rails'
+gem 'will_paginate', '~> 3.1', '>= 3.1.6'
+gem 'bootstrap', '~> 4.4.1'
+gem 'will_paginate-bootstrap4'

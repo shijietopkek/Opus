@@ -3,8 +3,8 @@
 <div class='card'>
 
     <div class='card-body'>
-    <h1 class="card-title"><%= @post.title %> (<%= @post.body.split.size %> words)</h1>
-    <div class='floatleft'>
+    <h4 class="card-title"><%= @post.title %> (<%= @post.body.split.size %> words)</h4>
+    <div>
 
     <%= link_to @post.user.username, user_path(@post.user), :class=>'btn btn-dark btn-tags'%>
     <%= render 'users/category', post_category: @post.category%>
@@ -12,8 +12,8 @@
     <a class='btn btn-light btn-tags'><%= distance_of_time_in_words(@post.created_at,Time.now)%> ago</a>
     
     </div>
-    <br>
     <div class="form-body">
+    
     <p class="card-text"><%= simple_format(@post.body) %></p>
     <p class="card-text">(<%= @post.body.split.size %> words)</p>
 
@@ -34,30 +34,25 @@
 </div>
 <% end %>
 
-    </div>
-    </div>
-    </div>
+</div>
+</div>
+</div>
 
 
 
-    <hr>
+<hr>
    
     
    
 <%= link_to "Back to Home", home_path, :class => "btn btn-primary" %>
-
-
 <hr>
-<table id='commentssection' style="width:100%">
-<thead>
-<tr>
-<th><h3>Comments (<%= @post.comments.size %>)</h3></th>
-</tr>
-</thead>
-<tbody>
-<% @post.comments.each do |comment| %>
-    <tr>
-    <td>
+
+
+
+<h3>Comments (<%= @post.comments.size %>)</h3>
+<hr>
+<% @post_comments.each do |comment| %>
+
     <div class='card'>
     <div class='card-body'>
     
@@ -70,18 +65,19 @@
     <%= link_to 'delete', [comment.post,comment], method: :delete,
     data: {confirm: "Are you sure?"}, :class => 'btn btn-danger btn-tags' %>
     <% end %>
-    
     </div>
     </div>
-    <br>
-    </td>
-    </tr>
     
 <% end %>
-</tbody>
-</Table>
+<br>
+<div class="pagination justify-content-center">
+<%= will_paginate @post_comments, renderer: WillPaginate::ActionView::BootstrapLinkRenderer%>
+</div>
+
+
 
 <h3>Add Comment</h3>
+<hr>
 <%= form_for([@post, @post.comments.build]) do |f| %>
     <p>
         <%= f.label :username %><br>

@@ -1,0 +1,27 @@
+
+<% words = 0 %>
+<% entries = 0 %>
+<% user.posts.each do |post| %>
+    <% words+=post.body.split.size %>
+    <% entries+=1 %>
+<% end %>
+<div class='card'>
+<div class='card-body text-center'>
+<h4>
+<% if current_user && user.id == current_user.id %>
+    I have
+<% else %>
+    <%= user.username %> has
+<% end %>
+written <strong><%= entries %></strong> 
+
+<% if entries==1 %>
+entry
+<% else %>
+entries
+<% end %>
+
+so far with a cumulative word count of <strong><%= words %></strong> and an average word count of <strong><%= words/entries %></strong> per entry.
+</h4>
+</div>
+</div>

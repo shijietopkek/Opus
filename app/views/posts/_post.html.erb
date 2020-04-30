@@ -11,11 +11,11 @@
 
     <div class='star-div-1' id="star_div_1_<%=post.id%>">
     <% if (current_user && (current_user.liked? post)) %>
-    <h4>
+    <h4 class='fa-star-wrapper'>
     <%= link_to '', unstar_post_path(post), remote:true, id:"star_#{post.id}", class:"fas fa-star starred" %>
     </h4>
     <% else %>
-    <h4>
+    <h4 class='fa-star-wrapper'>
     <%= link_to '', star_post_path(post), remote:true, id:"star_#{post.id}",class:"fas fa-star unstarred" %>
     </h4>
     <% end %>
@@ -35,7 +35,7 @@
 
     <h4 class="card-title">
     <%= link_to "#{post.title} (#{post.body.split.size} words)", post_path(post), :class => 'black-link' %>
-    <%= render partial: "/posts/editdelbtn", locals: {post: post} %>
+    
     
     </h4>
     <p class="card-text"><%= post.tldr %></p>
@@ -46,8 +46,11 @@
     <a class='btn btn-light btn-tags'><%= distance_of_time_in_words(post.created_at,Time.now)%> ago</a>
     
     </div>
+
         
     </div>
+    <div class='vertical-border'></div>
+    <div class='edit-del-div'><h4><%= render partial: "/posts/editdelbtn", locals: {post: post} %><h4></div>
     </div>
 
 </div>

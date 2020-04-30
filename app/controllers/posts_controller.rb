@@ -1,7 +1,8 @@
 class PostsController < ApplicationController
     before_action :authenticate_user!, except: [:index, :show]
     def index
-        @posts = Post.all
+        @posts = Post.order(created_at: :desc).paginate(:page => params[:page], per_page: 5)
+        
     end
     def new
         @post = Post.new
@@ -9,6 +10,7 @@ class PostsController < ApplicationController
     end
     def show
         @post = Post.find(params[:id])
+        @post_comments = @post.comments.order(created_at: :desc).paginate(:page => params[:page], per_page:5)
     end
     def create
         @post = Post.new(post_params)
@@ -79,6 +81,6 @@ class PostsController < ApplicationController
 
     
     private def post_params
-        params.require(:post).permit(:title, :tldr, :body, :category)
+        params.require(:post).permit(:title, :tldr, :body, :category,:search)
     end
 end
