@@ -1,6 +1,10 @@
 
-
 <h1>All Posts</h1>
+
+<%= search_form_for @q do |f| %>
+    <%= f.label "search entries" %>
+    <%= f.search_field :tldr_or_title_or_category_or_user_username_cont, :placeholder=>"title, category, user etc.", :class=>"form-control" %>
+<% end %>
 <hr>
 
 <% @posts.each do |post| %>
@@ -11,3 +15,4 @@
 <div class="pagination justify-content-center">
 <%= will_paginate @posts, renderer: WillPaginate::ActionView::BootstrapLinkRenderer%>
 </div>
+

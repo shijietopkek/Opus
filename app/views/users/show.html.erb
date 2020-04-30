@@ -46,14 +46,25 @@ This place feels a little empty. Why not create your first post?
 <% end %>
 <hr>
 
-<% @user_starred_posts.each do |post| %>
 
-    <%= render partial: "/posts/post",locals: {post: post}%>
+<div class='card'>
+<div class='card-body text-center'>
+<h4>
+<%= @user.username %> has starred <b><%= @user.find_liked_items.size %></b> 
+<% if @user.find_liked_items.size==1 %>
+post
+<% else %>
+posts
 <% end %>
 
-<div class="pagination justify-content-center">
-<%= will_paginate @user_starred_posts, renderer: WillPaginate::ActionView::BootstrapLinkRenderer%>
+</h4>
+<br>
+
+
+<%= link_to "View Posts", starred_list_user_path(@user), :class=>"btn btn-dark btn-lg"%>
 </div>
+</div>
+<br>
 
 
 
@@ -64,4 +75,5 @@ This place feels a little empty. Why not create your first post?
 </div>
 <% end %>
 <br>
+
 

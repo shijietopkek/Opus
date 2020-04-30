@@ -25,7 +25,20 @@
     
     
     <% if(current_user && @post.user==current_user) %>
+
+<div class="floatleft" style="background-color:#696969;display:inline-flex;padding-right:0.5rem;padding-left:0.5rem;padding-top:0.5rem;">
+<% if (current_user && (current_user.liked? @post)) %>
+
+<div style="flex:50%;margin-right:5px;"><h4 ><%= link_to '', unstar_post_path(@post), remote:true, id:"star_#{@post.id}", class:"fas fa-star starred outlined"%></h4></div>     
+
+<div class="fa-star-text" id="stars_<%=@post.id%>"style="flex:50%"><h4 class='star-text'><%= @post.get_upvotes.size %></h4></div>
+<% else %>
+<div style="flex:50%;margin-right:5px;"><h4 ><%= link_to '', star_post_path(@post), remote:true, id:"star_#{@post.id}",class:"fas fa-star unstarred outlined"%></h4></div>
+ <div class="fa-star-text" id="stars_<%=@post.id%>"style="flex:50%"><h4 class='star-text'><%= @post.get_upvotes.size %></h4></div>
+<% end %>
+</div> 
 <div class="floatright">
+
 <%= link_to "Edit", edit_post_path(@post), :class => "btn btn-default btn-tags" %>
 <%= link_to "Delete", post_path(@post),
                         method: :delete,

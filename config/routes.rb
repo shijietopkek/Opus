@@ -20,5 +20,9 @@ Rails.application.routes.draw do
     resources :comments
 
   end
-  resources :users
+  resources :users do
+    member do 
+      get 'starred_list', to: "users#starred_list"
+    end
+  end
 end

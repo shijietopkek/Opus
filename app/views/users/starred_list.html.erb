@@ -1,0 +1,18 @@
+<%= link_to "Back to Profile", user_path(@user), :class => "btn btn-primary" %>
+<hr>
+
+<% if current_user && current_user.id==@user.id %>
+<h1>My Starred Posts</h1>
+<% else %>
+<h1><%= @user.username %>'s Starred Posts</h1>
+<% end %>
+<hr>
+<% @user_starred_posts.each do |post| %>
+
+    <%= render partial: "/posts/post",locals: {post: post}%>
+<% end %>
+
+<div class="pagination justify-content-center">
+<%= will_paginate @user_starred_posts, renderer: WillPaginate::ActionView::BootstrapLinkRenderer%>
+</div>
+

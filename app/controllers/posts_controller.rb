@@ -1,7 +1,10 @@
 class PostsController < ApplicationController
     before_action :authenticate_user!, except: [:index, :show]
     def index
-        @posts = Post.order(created_at: :desc).paginate(:page => params[:page], per_page: 5)
+        @q = Post.ransack(params[:q])
+  
+            @posts = @q.result.includes(:user).order(created_at: :desc).paginate(:page => params[:page], per_page:5)
+
         
     end
     def new
