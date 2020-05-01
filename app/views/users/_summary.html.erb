@@ -1,27 +1,85 @@
 
+
+
+
 <% words = 0 %>
 <% entries = 0 %>
 <% user.posts.each do |post| %>
     <% words+=post.body.split.size %>
     <% entries+=1 %>
 <% end %>
+
+<%if user.posts.size>0%>
+<% key,value =  user.posts.group('category').order('count_all desc').limit(1).count.first%>
+<% category = key+' ('+value.to_s+')' %>
+<% end %>
+
+
+
 <div class='card'>
-<div class='card-body text-center'>
-<h4>
-<% if current_user && user.id == current_user.id %>
-    I have
+<div class='card-body'>
+<% if current_user && current_user.id==user.id %>
+<h3>My Summary</h3>
 <% else %>
-    <%= user.username %> has
+<h3><%= user.username %>'s Summary</h3>
 <% end %>
-written <strong><%= entries %></strong> 
+<hr>
 
-<% if entries==1 %>
-entry
+
+<div class="display-flex">
+<div class="summary-l">
+
+<p>Current Score: <b><%= user.score %></b></p>
+<p>Ranking: <b>#<%=user.ranking%></b></p>
+
+
+<p>Preferred Category: <% if category %><%= render 'users/category', post_category: category%><% else%>No preferred category :(<%end%></p>
+<table class="table table-bordered text-center">
+  <thead>
+    <tr>
+      <th scope="col" class="col-md-4">No. of entries</th>
+      <th scope="col" class="col-md-4">Total word count</th>
+      <th scope="col" class="col-md-4">Avg. word count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="font-weight:bold"><%= entries %></td>
+      <td style="font-weight:bold"><%= words %></td>
+      <td style="font-weight:bold"><% if entries==0%>0<%else%><%= words/entries %><%end%></td>
+    </tr>
+</tbody>
+</table>
+</div>
+<div class="summary-divider"></div>
+
+<div class= "summary-r">
+
+
+<p>Description<p>
+<hr>
+<p>
+<% if user.description %>
+<%= user.description %>
 <% else %>
-entries
+Oh no, user does not have a description :(
+<% end %>
+</p>
+
+
+</div>
+</div>
+
+<% if current_user && current_user.id==@user.id %>
+<hr>
+<div class="floatright">
+<%= link_to "Edit Profile",  edit_user_registration_path, :class=>"btn btn-primary btn-lg"%>
+</div>
 <% end %>
 
-so far with a cumulative word count of <strong><%= words %></strong> and an average word count of <strong><%= words/entries %></strong> per entry.
-</h4>
+
+
+
+
 </div>
 </div>

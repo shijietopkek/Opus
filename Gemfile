@@ -71,3 +71,5 @@ gem 'will_paginate', '~> 3.1', '>= 3.1.6'
 gem 'bootstrap', '~> 4.4.1'
 gem 'will_paginate-bootstrap4'
 gem 'ransack'
+
+gem 'rankitize', '~> 0.1'

@@ -42,8 +42,8 @@
     <div class="post-preview-container">
     <%= link_to post.user.username, user_path(post.user), :class=>'btn btn-dark btn-tags'%>
     <%= render 'users/category', post_category: post.category%>
-    <a class='btn btn-light btn-tags'><%= post.created_at.strftime("%d/%m/%Y")%></a>
-    <a class='btn btn-light btn-tags'><%= distance_of_time_in_words(post.created_at,Time.now)%> ago</a>
+    <a class='btn btn-outline-info waves-effect btn-tags'><%= post.created_at.strftime("%d/%m/%Y")%></a>
+    <a class='btn btn-outline-info waves-effect btn-tags'><%= distance_of_time_in_words(post.created_at,Time.now)%> ago</a>
     
     </div>
 

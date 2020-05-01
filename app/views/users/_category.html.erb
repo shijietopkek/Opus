@@ -1,7 +1,24 @@
 
+<% def category(post_category) %>
+    <% p = post_category%>
+    <%  if p.include?'GP Essay'%>
+    <%      'purple'%>
+    <%  elsif p.include?'Non-GP Essay'%>
+    <%       'deep-purple'%>
+    <%  elsif p.include?'Poetry'%>
+    <%  'pink'%>
+        <%  elsif p.include?'Story: Fiction'%>
+        <%     'light-green'%>
+        <%  elsif p.include?'Story: Non-Fiction'%>
+        <%      'yellow'%>
+        <%   elsif p.include?'Others'%>
+        <%      'cyan'%>
+        <%   else%>
+        <%   'default'%>
+        <%  end%>
+        <%end%>
 
 
 
-<% category = {'GP Essay'=>"purple",'Non-GP Essay' =>"deep-purple", 'Poetry' => "pink", 'Story: Fiction' => "light-green", 'Story: Non-Fiction'=> "yellow", 'Others'=>"cyan"}%>
-<a class='btn btn-<%= category[post_category]%> btn-tags'><%= post_category%></a>
+<a class='btn btn-<%= category(post_category)%> btn-tags'><%= post_category%></a>
 

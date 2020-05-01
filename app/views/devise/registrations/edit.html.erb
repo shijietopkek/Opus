@@ -1,12 +1,8 @@
-<div class="col-md-6 mx-auto text-center">
             <h1 class="wv-heading--title">
             Edit <%= resource_name.to_s.humanize %>
             </h1>
-      </div>
-      <br>
-<div class="row">
-<div class="col-md-4 mx-auto">
-    <div class="myform form ">
+      <hr>
+
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
@@ -14,26 +10,27 @@
   <%= f.text_field :username,placeholder: :username, autofocus: true, autocomplete: "false",:class=>"form-control my-input"%>
 </div>
 
-<% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+<div class="field form-group">
+<%= f.text_area :description,placeholder: "Description (280 characters MAX)", autofocus: true, autocomplete: "false",:class=>"form-control my-input textarealg"%>
+</div>
+
   <em><i>Leave blank if you don't want to change</i></em>
 <div class="field form-group">
-  <%= f.password_field :password, placeholder: "#{:password} (#{@minimum_password_length} characters minimum)",autocomplete: "new-password",:class=>"form-control my-input" %>
+  <%= f.password_field :password, placeholder: "Password (#{@minimum_password_length} characters MIN)",autocomplete: "new-password",:class=>"form-control my-input" %>
   
   </div>
 
 <div class="field form-group">
-  <%= f.password_field :password_confirmation, placeholder: :password_confirmation,autocomplete: "new-password", :class=>"form-control my-input" %>
+  <%= f.password_field :password_confirmation, placeholder: "Password Confirmation",autocomplete: "new-password", :class=>"form-control my-input" %>
 </div>
 <em><i>To confirm your changes</i></em>
 <div class="field form-group">
   <%= f.password_field :current_password, placeholder: "Current Password",autocomplete: "current-password", :class=>"form-control my-input" %>
 </div>
 
-<div class="actions text-center">
-  <%= f.submit "Update", :class=>"btn btn-block send-button tx-tfm"%>
-</div>
+
+  <%= f.submit "Update", :class=>"btn blue-gradient"%>
+
 <% end %>
 </div>
 </div>
@@ -46,23 +43,20 @@
             Cancel my Account
             </h1>
             <h2 class="wv-heading--subtitle">
-              onii chan pls don't leave me uwu. Well, if you insist...
+              We hate to see you go! Well, if you insist... seeyounara :(
                 </h2>
       </div>
       <div class="row">
       <div class="col-md-4 mx-auto">
           <div class="myform form ">
           <div class="actions text-center">
-  <%= button_to "Delete Account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete ,:class=>"btn btn-danger btn-lg"%>
+  <%= button_to "Delete Account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete ,:class=>"btn btn-outline-danger waves-effect btn-lg"%>
  
  <br>
-  <%= link_to "Back", :back, :class => "black-link"%>
+  <%= link_to "Back", :back, :class => "btn btn-elegant"%>
   </div>
+  <br>
 
-
-</div>
-</div>
-</div>
 
 
 
