@@ -1,22 +1,30 @@
 
 <% def category(post_category) %>
     <% p = post_category%>
-    <%  if p.include?'GP Essay'%>
-    <%      'purple'%>
+    <%  if p.include?'Story (Non-Fiction)'%>
+
+        <%  return  'deep-orange'%>
+    <%  elsif p.include?'Story (Fiction)'%>
+        <%    return 'light-green'%>
+    <%   elsif p.include?'Others'%>
+        <%     return  'cyan'%>
     <%  elsif p.include?'Non-GP Essay'%>
-    <%       'deep-purple'%>
+        <%     return  'purple'%>
+    <%  elsif p.include?'GP Essay'%>
+        <%     return   'deep-purple'%>
     <%  elsif p.include?'Poetry'%>
-    <%  'pink'%>
-        <%  elsif p.include?'Story: Fiction'%>
-        <%     'light-green'%>
-        <%  elsif p.include?'Story: Non-Fiction'%>
-        <%      'yellow'%>
-        <%   elsif p.include?'Others'%>
-        <%      'cyan'%>
-        <%   else%>
-        <%   'default'%>
-        <%  end%>
-        <%end%>
+        <%  return  'pink'%>
+    
+    
+    
+        
+    
+        
+        
+   
+
+    <%  end%>
+    <%end%>
 
 
 

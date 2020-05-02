@@ -13,7 +13,7 @@ validates :username, presence: true, uniqueness: { case_sensitive: false }
 validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
 validates :description, length: {maximum: 280}
 attr_writer :login
-attr_accessor :score, :ranking
+attr_accessor :score, :ranking, :postf, :days_since_joined
 
 
   def login
@@ -29,11 +29,26 @@ attr_accessor :score, :ranking
       entries+=1
     end
 
-    @set_score= (entries) + (words/1000.0)
+    @set_score= ((entries) + (words/1000.0)).round(3)
   end
 
   def ranking
     @set_ranking= User.all.sort_by(&:score).reverse.pluck(:id).index(self.id) + 1
+  end
+
+  def days_since_joined
+    user = User.find(self.id)
+    no_of_days_since_joining = ((Time.now-user.created_at)/86400 +1).to_i
+    @set_days_since_joined=no_of_days_since_joining
+  end
+
+  def postf
+    user = User.find(self.id)
+    if(user.posts.size >0)
+      @set_postf = (days_since_joined).to_f/user.posts.size
+    else
+      @set_postf = 99999
+    end
   end
 
     

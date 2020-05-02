@@ -10,6 +10,12 @@
   <%= f.text_field :username,placeholder: :username, autofocus: true, autocomplete: "false",:class=>"form-control my-input"%>
 </div>
 
+
+<div class="field form-group display-inline-block" >
+<label>Target (No. of days per post)</label>
+<%= f.select :target,[1,2,3,4,5,6,7,14,30],{},:class=>"form-control my-input browser-default custom-select"%>
+</div>
+
 <div class="field form-group">
 <%= f.text_area :description,placeholder: "Description (280 characters MAX)", autofocus: true, autocomplete: "false",:class=>"form-control my-input textarealg"%>
 </div>

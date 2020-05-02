@@ -14,6 +14,11 @@
 <% category = key+' ('+value.to_s+')' %>
 <% end %>
 
+<% style='red'%>
+<% if user.target && user.postf <= user.target %>
+<% style = 'green'%>
+<%end%>
+
 
 
 <div class='card'>
@@ -29,12 +34,13 @@
 <div class="display-flex">
 <div class="summary-l">
 
-<p>Current Score: <b><%= user.score %></b></p>
-<p>Ranking: <b>#<%=user.ranking%></b></p>
+<h5>Current Score: <b><%= user.score %></b></h5>
+<h5>Ranking: <b>#<%=user.ranking%></b></h5>
 
 
-<p>Preferred Category: <% if category %><%= render 'users/category', post_category: category%><% else%>No preferred category :(<%end%></p>
-<table class="table table-bordered text-center">
+<h5>Preferred Category: <% if category %><%= render 'users/category', post_category: category%><% else%>No preferred category<%end%></h5>
+<br>
+<table class="table table-bordered text-center summary-table-1">
   <thead>
     <tr>
       <th scope="col" class="col-md-4">No. of entries</th>
@@ -44,27 +50,54 @@
   </thead>
   <tbody>
     <tr>
-      <td style="font-weight:bold"><%= entries %></td>
-      <td style="font-weight:bold"><%= words %></td>
-      <td style="font-weight:bold"><% if entries==0%>0<%else%><%= words/entries %><%end%></td>
+      <td style="font-weight:bold"><span class="word-emphasis"><%= entries %></span> </td>
+      <td style="font-weight:bold"><span class="word-emphasis"><%= words %></span> </td>
+      <td style="font-weight:bold"><span class="word-emphasis"><% if entries==0%>0<%else%><%= words/entries %><%end%></span> </td>
     </tr>
 </tbody>
 </table>
+<br>
+<h5>Post Frequency</h5>
+<hr>
+<table class="table table-bordered text-center summary-table-2">
+    <tr>
+        <th scope="col" ><span class="word-emphasis">Target</span></th>
+        <td style="font-weight:bold">
+        
+        <%if user.target%>
+        once every <span class="word-emphasis"><%= user.target %></span> days
+        <%else%>
+        <span class="word-emphasis">No target set</span>
+        <%end%>
+        </td>
+    </tr>
+ 
+    <tr>
+        <th scope="col" ><span class="word-emphasis">Actual</span></th>
+        <td style="font-weight:bold">once every <span class="word-emphasis" style="color:<%=style%>;"><%= user.postf.round(3) %></span> days</td>
+    </tr>
+</table>
+<h5 style="color:<%=style%>"><%if style=='green'%>Keep up the good work!<%else%>User didn't hit target! Time to catch up!<%end%></h5>
+<br>
+
+
+
 </div>
 <div class="summary-divider"></div>
 
 <div class= "summary-r">
 
 
-<p>Description<p>
+<h5>Description</h5>
 <hr>
 <p>
 <% if user.description %>
-<%= user.description %>
+<%= simple_format(user.description) %>
 <% else %>
 Oh no, user does not have a description :(
 <% end %>
 </p>
+<p><%= user.target %></p>
 
 
 </div>
