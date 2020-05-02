@@ -346,6 +346,9 @@ table.summary-table-2 > tbody>tr:nth-child(1){
 .display-inline-block{
     display:inline-block;
 }
+.align-center{
+    text-align:center;
+}
 
 @media (max-device-width: 812px){
     h1{
